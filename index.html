@@ -84,7 +84,7 @@
     lamp.diffuse=new BABYLON.Color3(1,1,0);
     lamp.intensity=0;
    
-    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio.glb",scene,function(newMeshes){
+    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio2.glb",scene,function(newMeshes){
         newMeshes[0]="Project";
          
          scene.onPointerDown = function castRay(){
@@ -92,14 +92,33 @@
             
      
              var hit = scene.pickWithRay(ray);
-             if(hit.pickedMesh.name=="car_game" && hit.pickedMesh)
+             if(hit.pickedMesh.name=="car" && hit.pickedMesh)
+             {
+                 console.log("true");
+             
+                 
+                 createGUIButton();
+             }    if(hit.pickedMesh.name=="snake" && hit.pickedMesh)
              {
                  console.log("true");
              
                  
                  createGUIButton();
              }
+             if(hit.pickedMesh.name=="todo" && hit.pickedMesh)
+             {
+                 console.log("true");
              
+                 
+                 createGUIButton();
+             }
+             if(hit.pickedMesh.name=="mouse" && hit.pickedMesh)
+             {
+                 console.log("true");
+             
+                 
+                 createGUIButton();
+             }
              if(hit.pickedMesh.name=="Lamp" && hit.pickedMesh && lampon==false)
              {
                  lampon=true;
@@ -140,7 +159,7 @@
     
 
     // Default intensity is 1. Let's dim the light a small amount
-   bulb1.intensity =1000;
+   bulb1.intensity =100;
    var bulb2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(.6, 15.09,-47.06), scene);
   bulb2.intensity =200;
 var bulb3 = new BABYLON.PointLight("light3", new BABYLON.Vector3(.09, 15.63,-35.14), scene);
