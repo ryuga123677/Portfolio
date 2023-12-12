@@ -97,7 +97,7 @@
                  console.log("true");
              
                  
-                 createGUIButton();
+                 createGUIButton("https://github.com/ryuga123677/mobile-car-simulation");
              }    if(hit.pickedMesh.name=="snake" && hit.pickedMesh)
              {
                  console.log("true");
@@ -105,19 +105,26 @@
                  
                  createGUIButton();
              }
-             if(hit.pickedMesh.name=="todo" && hit.pickedMesh)
+             if(hit.pickedMesh.name=="todo.001" && hit.pickedMesh)
              {
                  console.log("true");
              
                  
-                 createGUIButton();
+                 createGUIButton("https://github.com/ryuga123677/Chat-Todo-app");
              }
              if(hit.pickedMesh.name=="mouse" && hit.pickedMesh)
              {
                  console.log("true");
              
                  
-                 createGUIButton();
+                 createGUIButton("https://github.com/ryuga123677/Mouse-runner");
+             }
+             if(hit.pickedMesh.name=="Screenshot (543)" && hit.pickedMesh)
+             {
+                 console.log("true");
+             
+                 
+                 createGUIButton("https://github.com/ryuga123677/Snake-and-Ladder");
              }
              if(hit.pickedMesh.name=="Lamp" && hit.pickedMesh && lampon==false)
              {
@@ -178,7 +185,7 @@ bulb4.intensity =300;
 
 
 
-function createGUIButton(){
+function createGUIButton(name){
     //Creates a gui label to display the cannon
     let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", "Open Project");
@@ -188,10 +195,12 @@ function createGUIButton(){
     guiButton.cornerRadius = 5;
     guiButton.background = "green";
     guiButton.onPointerUpObservable.add(function() {
+        window.open(name,"newwindow","status=1,fullscreen=1")
         guiCanvas.dispose();
     });
     guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
     guiCanvas.addControl(guiButton);
+    
 }
 
   //mesh.position.y=2;
