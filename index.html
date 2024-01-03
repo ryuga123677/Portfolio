@@ -6,19 +6,19 @@
         <title>Harshit's Portfolio</title>
 
         <!-- Babylon.js -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
         <script src="https://assets.babylonjs.com/generated/Assets.js"></script> 
         <script src="https://cdn.babylonjs.com/recast.js"></script>
-       <script src="https://cdn.babylonjs.com/ammo.js"></script>
-         <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script> -->
-        <!-- <script src="https://cdn.babylonjs.com/cannon.js"></script>
-        <script src="https://cdn.babylonjs.com/Oimo.js"></script> -->
+       <script src="https://cdn.babylonjs.com/ammo.js"></script> 
+         <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script> 
+         <script src="https://cdn.babylonjs.com/cannon.js"></script>
+        <script src="https://cdn.babylonjs.com/Oimo.js"></script> 
         <script src="https://cdn.babylonjs.com/earcut.min.js"></script> 
         <script src="https://cdn.babylonjs.com/babylon.js"></script>
          <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script> 
          
         <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
-        <!-- <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script> -->
+         <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script> 
         <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
         <!-- <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script> -->
         <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
@@ -85,7 +85,7 @@
     lamp.diffuse=new BABYLON.Color3(1,1,0);
     lamp.intensity=0;
    
-    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfoliofinal.glb",scene,function(newMeshes){
+    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio.glb",scene,function(newMeshes){
         newMeshes[0]="Project";
          
          scene.onPointerDown = function castRay(){
@@ -110,7 +110,7 @@
              {
                  console.log("true");
              
-                 
+            
                  createGUIButton("https://github.com/ryuga123677/Chat-Todo-app");
              }
              if(hit.pickedMesh.name=="mouse" && hit.pickedMesh)
@@ -133,6 +133,29 @@
              
                  
                  createGUIButton("https://github.com/ryuga123677/Snake-and-Ladder");
+             }
+             if(hit.pickedMesh.name=="chair" && hit.pickedMesh)
+             {
+                 
+                var chair= scene.getMeshByName("chair");
+                var chairpipe=scene.getMeshByName("chairpipe");
+                var chairbase=scene.getMeshByName("chairbase");
+                if(chair.position.x<9.36)
+                {
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chair, "position.x", 30, 120, chair.position.x, chair.position.x + 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chairpipe, "position.x", 30, 120, chairpipe.position.x, chairpipe.position.x + 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chairbase, "position.x", 30, 120, chairbase.position.x, chairbase.position.x + 2, 0);
+               
+            }
+                if(chair.position.x>9.35)
+                {
+                    BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chair, "position.x", 30, 120, chair.position.x, chair.position.x - 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chairpipe, "position.x", 30, 120, chairpipe.position.x, chairpipe.position.x - 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", chairbase, "position.x", 30, 120, chairbase.position.x, chairbase.position.x - 2, 0);
+                    
+                }
+                 
+      
              }
              if(hit.pickedMesh.name=="Lamp" && hit.pickedMesh && lampon==false)
              {
@@ -184,9 +207,9 @@ bulb4.intensity =300;
 
 
 
-//scene.debugLayer.show({
-//      embedMode: true,
-//   });
+scene.debugLayer.show({
+      embedMode: true,
+   });
 async function createtext(name,x,y,z,siz=.5,rot=Math.PI/2)
 {
     var fontData = await (await fetch("https://assets.babylonjs.com/fonts/Droid Sans_Regular.json")).json();
