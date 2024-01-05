@@ -85,7 +85,7 @@
     lamp.diffuse=new BABYLON.Color3(1,1,0);
     lamp.intensity=0;
    
-    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio.glb",scene,function(newMeshes){
+    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio2.glb",scene,function(newMeshes){
         newMeshes[0]="Project";
          
          scene.onPointerDown = function castRay(){
@@ -95,41 +95,112 @@
              var hit = scene.pickWithRay(ray);
              if(hit.pickedMesh.name=="car" && hit.pickedMesh)
              {
-                 console.log("true");
+                const photo = hit.pickedMesh;
+                const frame=scene.getMeshByName("carframe");
+               
+                
+ 
+                if(photo.position.x>=14.90)
+                {BABYLON.Animation.CreateAndStartAnimation("moveAnimation", photo, "position.x", 30, 120, photo.position.x, photo.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, frame.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", photo, "position.y", 30, 120, photo.position.y, photo.position.y - 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, frame.position.y-2, 0);   
+            }
+            if(photo.position.x<14.90)
+            {
+               BABYLON.Animation.CreateAndStartAnimation("moveAnimation", photo, "position.x", 30, 120, photo.position.x, 14.90, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, 14.90, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", photo, "position.y", 30, 120, photo.position.y, 10.45, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, 10.45, 0);  
+            }
+       
              
                  
                  createGUIButton("https://github.com/ryuga123677/mobile-car-simulation");
-             }    if(hit.pickedMesh.name=="snake" && hit.pickedMesh)
-             {
-                 console.log("true");
+             }   
+             if(hit.pickedMesh.name=="todo.001" && hit.pickedMesh)
+             {const photo = hit.pickedMesh;
+                const frame=scene.getMeshByName("todo");
+                if(photo.position.x>=14.92)
+                {BABYLON.Animation.CreateAndStartAnimation("moveAnimation", photo, "position.x", 30, 120, photo.position.x, photo.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, frame.position.x - 10, 0);
+               }
+            if(photo.position.x<14.92)
+            {
+               BABYLON.Animation.CreateAndStartAnimation("moveAnimation", photo, "position.x", 30, 120, photo.position.x, 14.92, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, 14.92, 0);
+            }
+       
              
                  
-                 createGUIButton();
-             }
-             if(hit.pickedMesh.name=="todo.001" && hit.pickedMesh)
-             {
-                 console.log("true");
+        
              
             
                  createGUIButton("https://github.com/ryuga123677/Chat-Todo-app");
              }
-             if(hit.pickedMesh.name=="mouse" && hit.pickedMesh)
-             {
-                 console.log("true");
+             if(hit.pickedMesh.name=="mouse.001" && hit.pickedMesh)
+             { 
              
-                 
-                 createGUIButton("https://github.com/ryuga123677/Mouse-runner");
+                const mouse = hit.pickedMesh;
+                const frame=scene.getMeshByName("mouse");
+            
+                 if(mouse.position.x>=14.97)
+                 {BABYLON.Animation.CreateAndStartAnimation("moveAnimation", mouse, "position.x", 30, 120, mouse.position.x, mouse.position.x - 10, 0);
+                 BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, frame.position.x - 10, 0);
+                 BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", mouse, "position.y", 30, 120, mouse.position.y, mouse.position.y - 4, 0);
+                 BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, frame.position.y - 4, 0);
+                }
+             if(mouse.position.x<14.97)
+             {
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", mouse, "position.x", 30, 120, mouse.position.x, 14.97, 0);
+             BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, 14.97, 0);
+             BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", mouse, "position.y", 30, 120, mouse.position.y, 12.45, 0);
+             BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, 12.45, 0);
+             }
+        
+  
+             createGUIButton("https://github.com/ryuga123677/Mouse-runner");
+
              }
              if(hit.pickedMesh.name=="hospital" && hit.pickedMesh)
-             {
-                 console.log("true");
+             {const hospital = hit.pickedMesh;
+                const frame=scene.getMeshByName("hospital2");
+                if(hospital.position.x>=14.92)
+                {BABYLON.Animation.CreateAndStartAnimation("moveAnimation", hospital, "position.x", 30, 120, hospital.position.x, hospital.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, frame.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", hospital, "position.y", 30, 120, hospital.position.y, hospital.position.y - 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, frame.position.y-2, 0);   
+            }
+            if(hospital.position.x<14.92)
+            {
+               BABYLON.Animation.CreateAndStartAnimation("moveAnimation", hospital, "position.x", 30, 120, hospital.position.x, 14.92, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, 14.92, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", hospital, "position.y", 30, 120, hospital.position.y, 10.41, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, 10.41, 0); 
+            }
+       
              
                  
                  createGUIButton("https://github.com/ryuga123677/Hospital_Management");
              }
              if(hit.pickedMesh.name=="Screenshot (543)" && hit.pickedMesh)
              {
-                 console.log("true");
+                const hospital = hit.pickedMesh;
+                const frame=scene.getMeshByName("snake.001");
+                if(hospital.position.x>=14.94)
+                {BABYLON.Animation.CreateAndStartAnimation("moveAnimation", hospital, "position.x", 30, 120, hospital.position.x, hospital.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, frame.position.x - 10, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", hospital, "position.y", 30, 120, hospital.position.y, hospital.position.y - 2, 0);
+                BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y, frame.position.y-2, 0);   
+               }
+            if(hospital.position.x<14.94)
+            {
+               BABYLON.Animation.CreateAndStartAnimation("moveAnimation", hospital, "position.x", 30, 120, hospital.position.x, 14.94, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation", frame, "position.x", 30, 120, frame.position.x, 14.94, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", hospital, "position.y", 30, 120, hospital.position.y, 10.46, 0);
+            BABYLON.Animation.CreateAndStartAnimation("moveAnimation2", frame, "position.y", 30, 120, frame.position.y,10.46, 0);   
+            }
+       
              
                  
                  createGUIButton("https://github.com/ryuga123677/Snake-and-Ladder");
@@ -207,9 +278,9 @@ bulb4.intensity =300;
 
 
 
-//scene.debugLayer.show({
-   //   embedMode: true,
- //  });
+scene.debugLayer.show({
+      embedMode: true,
+   });
 async function createtext(name,x,y,z,siz=.5,rot=Math.PI/2)
 {
     var fontData = await (await fetch("https://assets.babylonjs.com/fonts/Droid Sans_Regular.json")).json();
@@ -242,7 +313,6 @@ createtext("Projects",-14.92, 13.98,-36.98,siz=.7,-Math.PI/2);
 
 
 
-
 function createGUIButton(name){
     //Creates a gui label to display the cannon
     let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
@@ -258,6 +328,7 @@ function createGUIButton(name){
     });
     guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
     guiCanvas.addControl(guiButton);
+    return guiCanvas;
     
 }
 
