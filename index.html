@@ -228,6 +228,26 @@
                  
       
              }
+             if(hit.pickedMesh.name=="pexels-lucie-liz-3165335" && hit.pickedMesh)
+             { 
+                 
+                let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", "Click to see my animated Intro");
+                guiButton.width = "300px"
+                guiButton.height = "40px";
+                guiButton.color = "white";
+                guiButton.cornerRadius = 5;
+                guiButton.background = "green";
+                guiButton.onPointerUpObservable.add(function() {
+                    window.open(name,"newtab","status=1,fullscreen=1")
+                    guiCanvas.dispose();
+                });
+                guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+                guiCanvas.addControl(guiButton);
+                return guiCanvas;
+                
+               
+             }
              if(hit.pickedMesh.name=="Lamp" && hit.pickedMesh && lampon==false)
              {
                  lampon=true;
@@ -310,6 +330,7 @@ createtext("Development Skills-Flutter,Html,CSS,Javascript,babylonjs,React,Route
 createtext("Deployment Skills-Firebase,Firestore,Authentication,Node.js,Express.js,MongoDB,WebSockets",15.0, 6.95,-35.75);
 createtext("Creative Skills- Blender,Figma,Unity",15.0, 4.95,-35.75);
 createtext("Projects",-14.92, 13.98,-36.98,siz=.7,-Math.PI/2);
+createtext("Email-Kishanss311@gmail.com",4.2, 13.52,-19.81,siz=.7,2*Math.PI);
 
 
 
