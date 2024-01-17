@@ -8,11 +8,11 @@
         <!-- Babylon.js -->
          <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
         <script src="https://assets.babylonjs.com/generated/Assets.js"></script> 
-        <script src="https://cdn.babylonjs.com/recast.js"></script>
-       <script src="https://cdn.babylonjs.com/ammo.js"></script> 
-         <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script> 
-         <script src="https://cdn.babylonjs.com/cannon.js"></script>
-        <script src="https://cdn.babylonjs.com/Oimo.js"></script> 
+        <!-- <script src="https://cdn.babylonjs.com/recast.js"></script>
+       <script src="https://cdn.babylonjs.com/ammo.js"></script>  -->
+         <!-- <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>  -->
+         <!-- <script src="https://cdn.babylonjs.com/cannon.js"></script>
+        <script src="https://cdn.babylonjs.com/Oimo.js"></script>  -->
         <script src="https://cdn.babylonjs.com/earcut.min.js"></script> 
         <script src="https://cdn.babylonjs.com/babylon.js"></script>
          <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script> 
@@ -22,7 +22,8 @@
         <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
         <!-- <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script> -->
         <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
-        <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+        <!-- <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script> -->
+      
 
         <style>
             html, body {
@@ -47,6 +48,7 @@
         </style>
     </head>
 <body>
+
     <div id="canvasZone"><canvas id="renderCanvas">
    
     </canvas></div>
@@ -68,24 +70,35 @@
         var sceneToRender = null;
         var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createScene = function ()  {
-    // This creates a basic Babylon Scene object (non-mesh)
+ 
     var scene = new BABYLON.Scene(engine);
 
-    // This creates and positions a free camera (non-mesh)
    var camera = new BABYLON.ArcRotateCamera("camera",0, 1.5, 1, new BABYLON.Vector3(1, 8.5, -38), scene);
     
-    // This targets the camera to scene origin
- // camera.setTarget(BABYLON.Vector3.zero());
-
-    // This attaches the camera to the canvas
     camera.attachControl(canvas, true);
     camera.radius=5;
     var lampon=false;
     var  lamp=new BABYLON.PointLight("lamp", new BABYLON.Vector3(-5.03, 1.47,-47.67), scene);
     lamp.diffuse=new BABYLON.Color3(1,1,0);
     lamp.intensity=0;
-   
-    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolio2.glb",scene,function(newMeshes){
+  
+    var planeOpts = {
+        height: 2.5, 
+        width: 4.1, 
+        sideOrientation: BABYLON.Mesh.DOUBLESIDE
+};
+var ANote0Video = BABYLON.MeshBuilder.CreatePlane("plane", planeOpts, scene);
+var vidPos = (new BABYLON.Vector3(-12.32,8.61,-26.06));
+
+    ANote0Video.position = vidPos;
+    ANote0Video.rotation=new BABYLON.Vector3(0,-Math.PI/2,0);
+    var check =false;
+  
+    
+
+
+
+    BABYLON.SceneLoader.ImportMeshAsync(null,"./models/","portfolioold.glb",scene,function(newMeshes){
         newMeshes[0]="Project";
          
          scene.onPointerDown = function castRay(){
@@ -93,6 +106,53 @@
             
      
              var hit = scene.pickWithRay(ray);
+             
+              if(hit.pickedMesh.name=="plane" && hit.pickedMesh && check==false)
+              { check=true;
+               
+                    var ANote0VideoMat = new BABYLON.StandardMaterial("m", scene);
+                    var ANote0VideoVidTex = new BABYLON.VideoTexture("vidtex","./assets/myintro.mp4", scene);
+                    ANote0VideoMat.diffuseTexture = ANote0VideoVidTex;
+                    ANote0VideoMat.roughness = 100;
+                    ANote0VideoMat.emissiveColor = new BABYLON.Color3.Black();
+                    ANote0Video.material = ANote0VideoMat;
+                  
+                    
+                            camera.target=ANote0Video;
+                            bulb3.intensity = 1;
+                                    bulb2.intensity =1;
+                            
+                            
+                                ANote0VideoVidTex.video.play();
+                             
+                                let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", "pause");
+                                guiButton.width = "150px"
+                                guiButton.height = "40px";
+                                guiButton.top="300px";
+                                guiButton.color = "white";
+                                guiButton.cornerRadius = 5;
+                                guiButton.background = "green";
+                                guiButton.onPointerUpObservable.add(function() {
+                                    ANote0VideoVidTex.video.pause();
+                                
+                                    guiCanvas.dispose();
+                                    check=false;
+                                    var newTarget = new BABYLON.Vector3(1, 8.5, -38);
+                                    camera.target=newTarget;
+                                    bulb3.intensity = 500;
+                                    bulb2.intensity =200;
+                                    
+                                });
+                                guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+                                guiCanvas.addControl(guiButton);
+
+                            
+                       
+                          
+              
+
+              }
              if(hit.pickedMesh.name=="car" && hit.pickedMesh)
              {
                 const photo = hit.pickedMesh;
@@ -228,23 +288,9 @@
                  
       
              }
-             if(hit.pickedMesh.name=="pexels-lucie-liz-3165335" && hit.pickedMesh)
+             if(hit.pickedMesh.name=="screen" && hit.pickedMesh)
              { 
-                 
-                let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-                let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", "Click to see my animated Intro");
-                guiButton.width = "300px"
-                guiButton.height = "40px";
-                guiButton.color = "white";
-                guiButton.cornerRadius = 5;
-                guiButton.background = "green";
-                guiButton.onPointerUpObservable.add(function() {
-                    window.open(name,"newtab","status=1,fullscreen=1")
-                    guiCanvas.dispose();
-                });
-                guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
-                guiCanvas.addControl(guiButton);
-                return guiCanvas;
+               
                 
                
              }
@@ -299,8 +345,8 @@ bulb4.intensity =300;
 
 
 // scene.debugLayer.show({
-  //    embedMode: true,
-   //});
+ //     embedMode: true,
+//   });
 async function createtext(name,x,y,z,siz=.5,rot=Math.PI/2)
 {
     var fontData = await (await fetch("https://assets.babylonjs.com/fonts/Droid Sans_Regular.json")).json();
