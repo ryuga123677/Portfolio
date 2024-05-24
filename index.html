@@ -155,7 +155,7 @@
                   BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                 let guiButton = BABYLON.GUI.Button.CreateSimpleButton(
                   "guiButton",
-                  "pause"
+                  "Exit"
                 );
                 guiButton.width = "150px";
                 guiButton.height = "40px";
@@ -664,6 +664,15 @@
                   );
                 }
               }
+              if (hit.pickedMesh.name == "resume" && hit.pickedMesh) {
+                const hospital = hit.pickedMesh;
+              
+              
+                createGUIButton(
+                  "https://drive.google.com/file/d/1QVYi5Cghy2h3PdfHfFoJjqiBHaOSwGcm/view?usp=drivesdk","Open Resume"
+                );
+                 
+              }
               if (hit.pickedMesh.name == "screen" && hit.pickedMesh) {
               }
               if (
@@ -723,9 +732,9 @@
         bulb4.intensity = 300;
       
 
-        // scene.debugLayer.show({
-        //     embedMode: true,
-        //   });
+         //scene.debugLayer.show({
+           //  embedMode: true,
+           //});
         async function createtext(name, x, y, z, siz = 0.5, rot = Math.PI / 2) {
           var fontData = await (
             await fetch(
@@ -766,6 +775,7 @@
           10.95,
           -35.75
         );
+        
         createtext(
           "Development Skills-Flutter,Html,CSS,Javascript,babylonjs,React,Router,Redux",
           15.0,
@@ -795,14 +805,22 @@
           (siz = 0.7),
           2 * Math.PI
         );
-
-        function createGUIButton(name) {
+        createtext(
+          "Resume",
+          .62,
+          12.0,
+          -19.81,
+          (siz = 0.7),
+          2 * Math.PI
+        );
+        
+        function createGUIButton(name,secname="Open Project") {
           //Creates a gui label to display the cannon
           let guiCanvas =
             BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
           let guiButton = BABYLON.GUI.Button.CreateSimpleButton(
             "guiButton",
-            "Open Project"
+            secname
           );
           guiButton.width = "150px";
           guiButton.height = "40px";
