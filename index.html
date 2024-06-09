@@ -130,7 +130,7 @@
         BABYLON.SceneLoader.ImportMeshAsync(
           null,
           "./models/",
-          "Portfolio.glb",
+          "portfolio-hkv.glb",
           scene,
           function (newMeshes) {
             loadingDiv.style.display = "none";
@@ -737,7 +737,9 @@
           new BABYLON.Vector3(0.6, 15.09, -47.06),
           scene
         );
-        bulb2.intensity = 200;
+        bulb2.intensity = 100;
+        bulb2.diffuse = new BABYLON.Color3(0.0, 0.5, 0.52); 
+     
         var bulb3 = new BABYLON.PointLight(
           "light3",
           new BABYLON.Vector3(0.09, 15.63, -35.14),
