@@ -89,6 +89,7 @@
       };
       var createScene = function () {
         var scene = new BABYLON.Scene(engine);
+        
 
         var camera = new BABYLON.ArcRotateCamera(
           "camera",
@@ -101,6 +102,7 @@
 
         camera.attachControl(canvas, true);
         camera.radius = 5;
+        createInformationbar();
         var lampon = false;
         var lamp = new BABYLON.PointLight(
           "lamp",
@@ -851,11 +853,40 @@
           guiCanvas.addControl(guiButton);
           return guiCanvas;
         }
-
+        
+        function createInformationbar(name, secname = "Click on TV, Lamp, Projects,chair and Resume for Surprise") {
+          // Creates a GUI label to display the cannon
+          let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+          let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", secname);
+      
+          guiButton.width = "400px";
+          guiButton.height = "100px";
+          guiButton.color = "white";
+          guiButton.cornerRadius = 10;
+          guiButton.background = "#4CAF50";
+          guiButton.fontSize = 16;
+          guiButton.paddingTop = "20px";
+      
+          guiButton.onPointerUpObservable.add(function () {
+              guiCanvas.dispose();
+          });
+      
+          guiButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+          guiCanvas.addControl(guiButton);
+      
+          // Dispose of the guiCanvas after 5 seconds
+          setTimeout(function () {
+              guiCanvas.dispose();
+          }, 6000);
+      
+          return guiCanvas;
+      }
+      
         //mesh.position.y=2;
 
         return scene;
       };
+      
       window.initFunction = async function () {
         var asyncEngineCreation = async function () {
           try {
