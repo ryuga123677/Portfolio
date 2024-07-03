@@ -854,16 +854,16 @@
           return guiCanvas;
         }
         
-        function createInformationbar(name, secname = "Click on TV, Lamp, Projects, Chair and Resume for Surprises") {
+        function createInformationbar(name, secname = "Click on Lamp, Projects, Chair and Resume for Surprises. Click on TV for Introduction. Try rotating the camera using mouse.") {
           // Creates a GUI label to display the cannon
           let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
           let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", secname);
       
           guiButton.width = "400px";
           guiButton.height = "100px";
-          guiButton.color = "white";
+          guiButton.color = "black";
           guiButton.cornerRadius = 10;
-          guiButton.background = "red";
+          guiButton.background = "yellow";
           guiButton.fontSize = 16;
           guiButton.paddingTop = "20px";
       
@@ -877,7 +877,7 @@
           // Dispose of the guiCanvas after 5 seconds
           setTimeout(function () {
               guiCanvas.dispose();
-          }, 6000);
+          }, 7000);
       
           return guiCanvas;
       }
