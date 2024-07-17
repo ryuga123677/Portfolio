@@ -73,19 +73,7 @@
       z-index: 1000;
     }
 
-    @media (max-width: 768px) and (orientation: portrait) {
-      #canvasZone {
-        display: none;
-      }
-
-      #landscapeMessage {
-        display: flex;
-      }
-    }
-    #loadingText {
-        color: white;
-        font-size: 20px;
-    }
+   
     </style>
   </head>
   <body>
@@ -880,7 +868,7 @@
           return guiCanvas;
         }
         
-        function createInformationbar(name, secname = "Click on Lamp, Projects, Chair and Resume for Surprises. Click on TV for Introduction. Try rotating the camera using mouse.") {
+        function createInformationbar(name, secname = "Click on Lamp, Projects, Chair and Resume for Surprises. Click on TV for Introduction. Try rotating the camera using mouse. For better experience open in Landscape mode in Mobile phone") {
           // Creates a GUI label to display the cannon
           let guiCanvas = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
           let guiButton = BABYLON.GUI.Button.CreateSimpleButton("guiButton", secname);
@@ -938,6 +926,7 @@
       window.addEventListener("resize", function () {
         engine.resize();
       });
+      
     </script>
   </body>
 </html>
