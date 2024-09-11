@@ -35,34 +35,36 @@
         padding: 0;
       }
 
-      #renderCanvas {
-        width: 100%;
-        height: 100%;
-        touch-action: none;
+      @media screen and (orientation: landscape) {
+        /* Styles for landscape mode */
+        #renderCanvas {
+          width: 100%;
+          height: 100%;
+        }
       }
-
-      #canvasZone {
-        width: 100%;
-        height: 100%;
+      
+      @media screen and (orientation: portrait) {
+        /* Display a message or rotate the canvas */
+        #canvasZone {
+          display: none;
+        }
+        #loadingScreenDiv {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: black;
+        }
+        #loadingText {
+          color: white;
+          font-size: 18px;
+          text-align: center;
+          padding: 20px;
+        }
+        #loadingText::after {
+          content: "Please rotate your device to landscape mode.";
+        }
       }
-      #loadingScreenDiv {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    }
-
-     #loadingText {
-      color: white;
-      font-size: 20px;
-  }
-
+      
    
     </style>
   </head>
