@@ -110,7 +110,7 @@
         var lampon = false;
         var lamp = new BABYLON.PointLight(
           "lamp",
-          new BABYLON.Vector3(-5.03, 1.47, -47.67),
+          new BABYLON.Vector3(-0.08, 2.26, -47.98),
           scene
         );
         lamp.diffuse = new BABYLON.Color3(1, 1, 0);
@@ -136,7 +136,7 @@
         BABYLON.SceneLoader.ImportMeshAsync(
           null,
           "./models/",
-          "portfolio-hkv.glb",
+          "portfolio-final.glb",
           scene,
           function (newMeshes) {
             loadingDiv.style.display = "none";
@@ -696,7 +696,7 @@
               
               
                 createGUIButton(
-                  "https://drive.google.com/file/d/1FCp5oQ3BNBMpiFvhtiArNZhwBOn3uEkE/view?usp=drive_link","Open Resume"
+                  "https://drive.google.com/file/d/1wN6vqSVbpScyIGPUJFxk7gICAJ0R20BC/view?usp=drivesdk/ ","Open Resume"
                 );
                  
               }
@@ -761,9 +761,9 @@
         bulb4.intensity = 300;
       
 
-         //scene.debugLayer.show({
-           //  embedMode: true,
-           //});
+      //   scene.debugLayer.show({
+         //    embedMode: true,
+        //   });
         async function createtext(name, x, y, z, siz = 0.5, rot = Math.PI / 2) {
           var fontData = await (
             await fetch(
