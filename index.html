@@ -136,7 +136,7 @@
         BABYLON.SceneLoader.ImportMeshAsync(
           null,
           "./models/",
-          "portfolio-final.glb",
+          "portfolio.glb",
           scene,
           function (newMeshes) {
             loadingDiv.style.display = "none";
@@ -761,10 +761,10 @@
         bulb4.intensity = 300;
       
 
-      //   scene.debugLayer.show({
-         //    embedMode: true,
-        //   });
-        async function createtext(name, x, y, z, siz = 0.5, rot = Math.PI / 2) {
+         scene.debugLayer.show({
+             embedMode: true,
+          });
+        async function createtext(name, x, y, z, siz = 0.45, rot = Math.PI / 2) {
           var fontData = await (
             await fetch(
               "https://assets.babylonjs.com/fonts/Droid Sans_Regular.json"
@@ -796,42 +796,30 @@
           yellowMaterial.roughness = 1;
           myText.material = yellowMaterial;
         }
-        createtext("Hi I am Harshit Kumar Vishwakarma", 15.0, 13.95, -35.75);
-        createtext("B.tech in IIIT Ranchi", 15.0, 12.95, -35.75);
-        createtext(
-          "Programming skills-C,C++,C#,Dart,Python",
-          15.0,
-          10.95,
-          -35.75
-        );
+       createtext("Harshit's Tech Stacks", 15.0, 14.5, -35.75);
+       // createtext("B.tech in IIIT Ranchi", 15.0, 12.95, -35.75);
+       // createtext(
+        //  "Programming skills-C,C++,C#,Python",
+        //  15.0,
+        //  10.95,
+         // -35.75
+      //  );
         
-        createtext(
-          "Development Skills-Flutter,Html,CSS,Javascript,babylonjs,React,Router,Redux,p5js,MaterialUI",
-          15.0,
-          8.95,
-          -35.75
-        );
-        createtext(
-          "Deployment Skills-Firebase,Firestore,Authentication,Node.js,Express.js,MongoDB,WebSockets",
-          15.0,
-          6.95,
-          -35.75
-        );
-        createtext("Creative Skills- Blender,Figma,Unity", 15.0, 4.95, -35.75);
+      
         createtext(
           "Projects",
           -14.92,
           13.98,
           -36.98,
-          (siz = 0.7),
+          (siz = 0.6),
           -Math.PI / 2
         );
         createtext(
-          "Email-Kishanss311@gmail.com",
-          4.2,
-          13.52,
+          "Resume",
+         0.51,
+          13.72,
           -19.81,
-          (siz = 0.7),
+          (siz = 0.6),
           2 * Math.PI
         );
      
