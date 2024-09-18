@@ -761,9 +761,9 @@
         bulb4.intensity = 300;
       
 
-         scene.debugLayer.show({
-             embedMode: true,
-          });
+      //   scene.debugLayer.show({
+        //     embedMode: true,
+          //});
         async function createtext(name, x, y, z, siz = 0.45, rot = Math.PI / 2) {
           var fontData = await (
             await fetch(
@@ -797,13 +797,7 @@
           myText.material = yellowMaterial;
         }
        createtext("Harshit's Tech Stacks", 15.0, 14.5, -35.75);
-       // createtext("B.tech in IIIT Ranchi", 15.0, 12.95, -35.75);
-       // createtext(
-        //  "Programming skills-C,C++,C#,Python",
-        //  15.0,
-        //  10.95,
-         // -35.75
-      //  );
+    
         
       
         createtext(
